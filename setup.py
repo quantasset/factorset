@@ -11,7 +11,9 @@ with open('README.rst', encoding='utf-8') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['Click>=6.0', ]
+requirements = ['Click>=6.0', 'aiohttp>=3', 'grequests>=0.3.0', 'pandas>=0.20.0','lxml>=3'
+                'requests>=2', 'beautifulsoup4>=4', 'tushare>=1.1.6', 'fake-useragent>=0.1.10', 'redis>=2.10.6',
+                ]
 
 setup_requirements = ['pytest-runner', ]
 
@@ -44,7 +46,7 @@ setup(
     packages=find_packages(include=['factorset']),
     package_data = {
         'factorset': ['data/*.csv'],
-    },	
+    },
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,

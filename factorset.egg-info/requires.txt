@@ -1,1 +1,9 @@
 Click>=6.0
+aiohttp>=3
+grequests>=0.3.0
+pandas>=0.20.0
+lxml>=3requests>=2
+beautifulsoup4>=4
+tushare>=1.1.6
+fake-useragent>=0.1.10
+redis>=2.10.6

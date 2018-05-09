@@ -32,13 +32,13 @@ Description: =========
         Features
         --------
         
-        * TODO
-        * Many things
+        * 20 sample factors.
+        * Async fundamental data collection module.
         
         Credits
         -------
         
-        factorset: 
+        factorset:
         Providing Financial factors set of Chinese A-share. 提供中国A股市场因子集合，包含各类常用及特异因子计算方法，持续更新中。
         提供轻量级因子计算框架，高可扩展。持续更新中。
         

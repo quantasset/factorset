@@ -10,18 +10,10 @@ import proxy_pool
 
 sys.path.append(proxy_pool.__file__.strip(proxy_pool.__file__.split('\\')[-1]))
 
-import requests
 from proxy_pool.Run.main import run
 from factorset.Util.configutil import GetConfig
 
-
 gc = GetConfig()
-
-def get_proxy():
-    return requests.get("http://{}/get/".format(gc.proxypool)).content
-
-def get_all_proxy():
-    return requests.get("http://{}/get_all/".format(gc.proxypool)).json()
 
 def r():
     run()
