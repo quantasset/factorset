@@ -75,7 +75,7 @@ def data_fetch():
 
             break
         else:
-            print("Proxy pool is not ready!")
+            print("Proxy pool is not ready! We only have {} proxies!".format(len(get_all_proxy(gc.proxypool))))
             time.sleep(5)
 
 
