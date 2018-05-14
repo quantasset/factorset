@@ -19,9 +19,7 @@ Features
 
 - **Ease of Use:** factorset tries to get out of your way so that you can
   focus on algorithm development. See below for a code example.
-- **"Batteries Included":** many common statistics like
-  moving average and linear regression can be readily accessed from
-  within a user-written algorithm.
+
 
 Installation
 ============
