@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>factorset &mdash; factorset 0.0.2 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to factorset’s documentation!" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> factorset
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">DOCUMENTATION INDEX</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">factorset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-with-pip">Installing With <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#questions">Questions?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">factorset</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>factorset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/readme.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="factorset">
+<h1>factorset<a class="headerlink" href="#factorset" title="永久链接至标题">¶</a></h1>
+<p><a class="reference external" href="https://pypi.python.org/pypi/factorset"><img alt="pypi" src="https://img.shields.io/pypi/v/factorset.svg" /></a>
+<a class="reference external" href="https://pypi.python.org/pypi/factorset"><img alt="version status" src="https://img.shields.io/pypi/pyversions/factorset.svg" /></a>
+<a class="reference external" href="https://travis-ci.org/quantasset/factorset"><img alt="travis status" src="https://travis-ci.org/quantasset/factorset.png?branch=master" /></a>
+<a class="reference external" href="https://factorset.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/factorset/badge/?version=latest" /></a></p>
+<p>Factorset is a financial factors construction factory of Chinese A-share.
+提供中国A股市场因子集合，包含各类常用及特异因子计算方法，持续更新中。 提供轻量级因子计算框架，高可扩展。持续更新中。</p>
+<ul class="simple">
+<li><a class="reference external" href="https://factorset.readthedocs.io">Documentation</a></li>
+<li>Want to Contribute? See our <a class="reference external" href="http://factorset.readthedocs.io/contributing.html">Development Guidelines</a></li>
+</ul>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><strong>Ease of Use:</strong> factorset tries to get out of your way so that you can
+focus on algorithm development. See below for a code example.</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="永久链接至标题">¶</a></h2>
+<div class="section" id="installing-with-pip">
+<h3>Installing With <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#installing-with-pip" title="永久链接至标题">¶</a></h3>
+<p>Assuming you have all required (see note below) non-Python dependencies, you
+can install factorset with <code class="docutils literal notranslate"><span class="pre">pip</span></code> via:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install factorset
+</pre></div>
+</div>
+<p><strong>Note:</strong> Installing factorset via <code class="docutils literal notranslate"><span class="pre">pip</span></code> is slightly more involved than the
+average Python package.  Simply running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">factorset</span></code> will likely
+fail if you’ve never installed any scientific Python packages before.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FundCrawler</span></code> class in factorset depends on <a class="reference external" href="https://github.com/jhao104/proxy_pool/">proxy_pool</a>, a powerful proxy crawler.</p>
+</div>
+</div>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="永久链接至标题">¶</a></h2>
+<p>The following code implements a simple dual moving average algorithm.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">tushare</span> <span class="k">as</span> <span class="nn">ts</span>
+<span class="kn">from</span> <span class="nn">factorset.factors</span> <span class="k">import</span> <span class="n">BaseFactor</span>
+<span class="kn">from</span> <span class="nn">factorset.data.OtherData</span> <span class="k">import</span> <span class="n">code_to_symbol</span><span class="p">,</span> <span class="n">shift_date</span><span class="p">,</span> <span class="n">market_value</span>
+<span class="kn">from</span> <span class="nn">factorset.data</span> <span class="k">import</span> <span class="n">CSVParser</span> <span class="k">as</span> <span class="n">cp</span>
+<span class="kn">from</span> <span class="nn">factorset.Util.finance</span> <span class="k">import</span> <span class="n">ttmContinues</span>
+
+<span class="k">class</span> <span class="nc">NewFactor</span><span class="p">(</span><span class="n">BaseFactor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NewFactor = Calculate Method</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor_name</span><span class="o">=</span><span class="s1">&#39;NewFactor&#39;</span><span class="p">,</span> <span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;000016.SH&#39;</span><span class="p">,</span> <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">factor_parameters</span><span class="o">=</span><span class="p">{},</span> <span class="n">save_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Initialize super class.</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NewFactor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">factor_name</span><span class="o">=</span><span class="n">factor_name</span><span class="p">,</span> <span class="n">tickers</span><span class="o">=</span><span class="n">tickers</span><span class="p">,</span>
+                                     <span class="n">factor_parameters</span><span class="o">=</span><span class="n">factor_parameters</span><span class="p">,</span>
+                                     <span class="n">data_source</span><span class="o">=</span><span class="n">data_source</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prepare_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">begin_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+        <span class="n">shifted_begin_date</span> <span class="o">=</span> <span class="n">shift_date</span><span class="p">(</span><span class="n">begin_date</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+        <span class="c1"># motherNetProfit 40</span>
+        <span class="n">inst</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">concat_fund</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tickers</span><span class="p">,</span> <span class="s1">&#39;IS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">shifted_begin_date</span><span class="p">:</span><span class="n">end_date</span><span class="p">,[</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">]]</span>
+        <span class="n">inst</span><span class="p">[</span><span class="s1">&#39;release_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">index</span>
+        <span class="n">inst</span><span class="p">[</span><span class="s1">&#39;report_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">index</span>
+        <span class="c1"># cash_flows_yield 133</span>
+        <span class="n">cf</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">concat_fund</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tickers</span><span class="p">,</span> <span class="s1">&#39;CF&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">shifted_begin_date</span><span class="p">:</span><span class="n">end_date</span><span class="p">,[</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="mi">133</span><span class="p">]]</span>
+        <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;release_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">index</span>
+        <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;report_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">index</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">accrual_df</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="s1">&#39;release_date&#39;</span><span class="p">,</span> <span class="s1">&#39;report_date&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accrual_df</span><span class="p">[</span><span class="s1">&#39;accr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">accrual_df</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">accrual_df</span><span class="p">[</span><span class="mi">133</span><span class="p">]</span>
+
+        <span class="n">cash_flow_ls</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">accrual_df</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>  <span class="c1"># 财务数据不足4条会有异常</span>
+                <span class="n">reven_df</span> <span class="o">=</span> <span class="n">ttmContinues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">accrual_df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">accrual_df</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ticker</span><span class="p">],</span> <span class="s1">&#39;accr&#39;</span><span class="p">)</span>
+                <span class="n">reven_df</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ticker</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">cash_flow_ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reven_df</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">accrual_ttm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cash_flow_ls</span><span class="p">)</span>
+        <span class="c1"># 总市值</span>
+        <span class="c1"># Tushare的市值数据只有17年-now</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">market_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_source</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">other</span><span class="se">\\</span><span class="s1">otherdata.csv&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tickers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mkt_value</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;totals&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">generate_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trading_day</span><span class="p">):</span>
+        <span class="n">accr_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">accrual_ttm</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">accrual_ttm</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">trading_day</span><span class="p">]</span>
+        <span class="n">accr_df</span> <span class="o">=</span> <span class="n">accr_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;report_date&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+        <span class="n">accr_se</span> <span class="o">=</span> <span class="n">accr_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)[</span><span class="s1">&#39;accr_TTM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 取最近1年的财报</span>
+
+        <span class="n">today_mkt_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mkt_value</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">trading_day</span><span class="p">]</span>
+        <span class="n">mkt_value</span> <span class="o">=</span> <span class="n">today_mkt_value</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)[</span><span class="s1">&#39;mkt_value&#39;</span><span class="p">]</span>
+        <span class="n">ret_se</span> <span class="o">=</span> <span class="n">accr_se</span> <span class="o">/</span> <span class="n">mkt_value</span>
+        <span class="k">return</span> <span class="n">ret_se</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">from_dt</span> <span class="o">=</span> <span class="s1">&#39;2017-07-15&#39;</span>
+    <span class="n">to_dt</span> <span class="o">=</span> <span class="s1">&#39;2018-04-09&#39;</span>
+
+    <span class="c1"># 取沪深300</span>
+    <span class="n">hs300</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">get_hs300s</span><span class="p">()</span>
+    <span class="n">hs300</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">hs300</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">code_to_symbol</span><span class="p">)</span>
+
+    <span class="n">NewFactor</span> <span class="o">=</span> <span class="n">NewFactor</span><span class="p">(</span>
+        <span class="n">factor_name</span><span class="o">=</span><span class="s1">&#39;NewFactor&#39;</span><span class="p">,</span>
+        <span class="n">factor_parameters</span><span class="o">=</span><span class="p">{},</span>
+        <span class="n">tickers</span><span class="o">=</span><span class="n">hs300</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+        <span class="n">save_dir</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;.\data&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">NewFactor</span><span class="o">.</span><span class="n">generate_factor_and_store</span><span class="p">(</span><span class="n">from_dt</span><span class="p">,</span> <span class="n">to_dt</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;因子构建完成，并已成功入库!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can find other factors in the <code class="docutils literal notranslate"><span class="pre">factorset/factors</span></code> directory.</p>
+</div>
+<div class="section" id="questions">
+<h2>Questions?<a class="headerlink" href="#questions" title="永久链接至标题">¶</a></h2>
+<p>If you find a bug, feel free to <a class="reference external" href="https://github.com/quantasset/factorset/issues/new">open an issue</a> and fill out the issue template.</p>
+</div>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="永久链接至标题">¶</a></h2>
+<p>All contributions, bug reports, bug fixes, documentation improvements, enhancements, and ideas are welcome.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to factorset’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Wenchao Zhang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.2',
+            LANGUAGE:'zh_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
