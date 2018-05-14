@@ -1,3 +1,0 @@
-[console_scripts]
-factorset = factorset.cli:main
-

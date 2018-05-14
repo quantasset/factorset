@@ -2,45 +2,151 @@
 factorset
 =========
 
+|pypi|
+|version status|
+|travis status|
+|Docs|
 
-.. image:: https://img.shields.io/pypi/v/factorset.svg
-        :target: https://pypi.python.org/pypi/factorset
-
-
-.. image:: https://readthedocs.org/projects/factorset/badge/?version=latest
-        :target: https://factorset.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
+Factorset is a financial factors construction factory of Chinese A-share.
+提供中国A股市场因子集合，包含各类常用及特异因子计算方法，持续更新中。 提供轻量级因子计算框架，高可扩展。持续更新中。
 
 
-
-A Python package for computing chinese financial factors.
-
-
-* Free software: MIT license
-* Documentation: https://factorset.readthedocs.io.
-* Depository: https://github.com/quantasset/factorset/issues.
+- `Documentation <https://factorset.readthedocs.io>`_
+- Want to Contribute? See our `Development Guidelines <http://factorset.readthedocs.io/contributing.html>`_
 
 Features
---------
+========
 
-* 20 sample factors.
-* Async fundamental data collection module.
+- **Ease of Use:** factorset tries to get out of your way so that you can
+  focus on algorithm development. See below for a code example.
+- **"Batteries Included":** many common statistics like
+  moving average and linear regression can be readily accessed from
+  within a user-written algorithm.
 
-Credits
--------
+Installation
+============
 
-factorset:
-Providing Financial factors set of Chinese A-share. 提供中国A股市场因子集合，包含各类常用及特异因子计算方法，持续更新中。
-提供轻量级因子计算框架，高可扩展。持续更新中。
+Installing With ``pip``
+-----------------------
 
-Development Lead
-----------------
+Assuming you have all required (see note below) non-Python dependencies, you
+can install factorset with ``pip`` via:
 
-* wingturb <http://idwzx.com>
-* Code37 <495673131@qq.com>
-* jiamicu <jamic-sai@qq.com>
-* Mutex86 <gningh@gmail.com>
-* Andyliwr <541989418@qq.com>
-* Notmeor <531356207@qq.com>
+.. code-block:: bash
+
+    $ pip install factorset
+
+**Note:** Installing factorset via ``pip`` is slightly more involved than the
+average Python package.  Simply running ``pip install factorset`` will likely
+fail if you've never installed any scientific Python packages before.
+
+The ``FundCrawler`` class in factorset depends on `proxy_pool <https://github.com/jhao104/proxy_pool/>`_, a powerful proxy crawler.
+
+
+Quickstart
+==========
+
+The following code implements a simple dual moving average algorithm.
+
+.. code:: python
+
+    import pandas as pd
+    import tushare as ts
+    from factorset.factors import BaseFactor
+    from factorset.data.OtherData import code_to_symbol, shift_date, market_value
+    from factorset.data import CSVParser as cp
+    from factorset.Util.finance import ttmContinues
+
+    class NewFactor(BaseFactor):
+        """
+        NewFactor = Calculate Method
+        """
+        def __init__(self, factor_name='NewFactor', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
+            # Initialize super class.
+            super(NewFactor, self).__init__(factor_name=factor_name, tickers=tickers,
+                                         factor_parameters=factor_parameters,
+                                         data_source=data_source, save_dir=save_dir)
+
+        def prepare_data(self, begin_date, end_date):
+            shifted_begin_date = shift_date(begin_date, 500)
+            # motherNetProfit 40
+            inst = cp.concat_fund(self.data_source, self.tickers, 'IS').loc[shifted_begin_date:end_date,['ticker', 40]]
+            inst['release_date'] = inst.index
+            inst['report_date'] = inst.index
+            # cash_flows_yield 133
+            cf = cp.concat_fund(self.data_source, self.tickers, 'CF').loc[shifted_begin_date:end_date,['ticker', 133]]
+            cf['release_date'] = cf.index
+            cf['report_date'] = cf.index
+
+            self.accrual_df = cf.merge(inst, on=['ticker', 'release_date', 'report_date'])
+            self.accrual_df['accr'] = self.accrual_df[40] - self.accrual_df[133]
+
+            cash_flow_ls = []
+            for ticker in self.accrual_df['ticker'].unique():
+                try:  # 财务数据不足4条会有异常
+                    reven_df = ttmContinues(self.accrual_df[self.accrual_df['ticker'] == ticker], 'accr')
+                    reven_df['ticker'] = ticker
+                except:
+                    continue
+                cash_flow_ls.append(reven_df)
+
+            self.accrual_ttm = pd.concat(cash_flow_ls)
+            # 总市值
+            # Tushare的市值数据只有17年-now
+            df = market_value(self.data_source + '\\other\\otherdata.csv', self.tickers)
+            self.mkt_value = df.drop(['price', 'totals'], axis=1)
+
+        def generate_factor(self, trading_day):
+            accr_df = self.accrual_ttm[self.accrual_ttm['datetime'] <= trading_day]
+            accr_df = accr_df.sort_values(by=['datetime', 'report_date'], ascending=[False, False])
+            accr_se = accr_df.groupby('ticker')['accr_TTM'].apply(lambda x: x.iloc[0])  # 取最近1年的财报
+
+            today_mkt_value = self.mkt_value.loc[trading_day]
+            mkt_value = today_mkt_value.set_index('ticker')['mkt_value']
+            ret_se = accr_se / mkt_value
+            return ret_se.dropna()
+
+
+    if __name__ == '__main__':
+        from_dt = '2017-07-15'
+        to_dt = '2018-04-09'
+
+        # 取沪深300
+        hs300 = ts.get_hs300s()
+        hs300.code = hs300.code.apply(code_to_symbol)
+
+        NewFactor = NewFactor(
+            factor_name='NewFactor',
+            factor_parameters={},
+            tickers=hs300.code.tolist(),
+            save_dir='',
+            data_source='.\data',
+        )
+
+        NewFactor.generate_factor_and_store(from_dt, to_dt)
+        print('因子构建完成，并已成功入库!')
+
+
+You can find other factors in the ``factorset/factors`` directory.
+
+Questions?
+==========
+
+If you find a bug, feel free to `open an issue <https://github.com/quantasset/factorset/issues/new>`_ and fill out the issue template.
+
+Contributing
+============
+
+All contributions, bug reports, bug fixes, documentation improvements, enhancements, and ideas are welcome.
+
+
+.. |pypi| image:: https://img.shields.io/pypi/v/factorset.svg
+   :target: https://pypi.python.org/pypi/factorset
+.. |version status| image:: https://img.shields.io/pypi/pyversions/factorset.svg
+   :target: https://pypi.python.org/pypi/factorset
+.. |Docs| image:: https://readthedocs.org/projects/factorset/badge/?version=latest
+   :target: https://factorset.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+.. |travis status| image:: https://travis-ci.org/quantasset/factorset.png?branch=master
+   :target: https://travis-ci.org/quantasset/factorset
 
