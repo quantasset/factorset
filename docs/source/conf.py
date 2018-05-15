@@ -73,9 +73,8 @@ language = 'zh_CN'
 exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
-highlight_language = 'python'
-
-# pygments_style = 'sphinx'
+# highlight_language = 'python'
+pygments_style = 'default'
 
 
 # -- Options for HTML output -------------------------------------------------
