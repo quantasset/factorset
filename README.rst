@@ -12,7 +12,7 @@ Factorset is a financial factors construction factory of Chinese A-share.
 
 
 - `Documentation <https://factorset.readthedocs.io>`_
-- Want to Contribute? See our `Development Guidelines <http://factorset.readthedocs.io/contributing.html>`_
+- Want to Contribute? See our `Contributing Guidelines <https://factorset.readthedocs.io/en/latest/contributing.html>`_
 
 Features
 ========
@@ -44,10 +44,11 @@ The ``FundCrawler`` class in factorset depends on `proxy_pool <https://github.co
 Quickstart
 ==========
 
-The following code implements a simple dual moving average algorithm.
+The following code generate a ``Newfactor`` class.
 
-.. code:: python
+.. code-block:: python
 
+    import os
     import pandas as pd
     import tushare as ts
     from factorset.factors import BaseFactor
@@ -81,7 +82,7 @@ The following code implements a simple dual moving average algorithm.
 
             cash_flow_ls = []
             for ticker in self.accrual_df['ticker'].unique():
-                try:  # 财务数据不足4条会有异常
+                try:
                     reven_df = ttmContinues(self.accrual_df[self.accrual_df['ticker'] == ticker], 'accr')
                     reven_df['ticker'] = ticker
                 except:
@@ -118,7 +119,7 @@ The following code implements a simple dual moving average algorithm.
             factor_parameters={},
             tickers=hs300.code.tolist(),
             save_dir='',
-            data_source='.\data',
+            data_source=os.path.abspath('.'),
         )
 
         NewFactor.generate_factor_and_store(from_dt, to_dt)

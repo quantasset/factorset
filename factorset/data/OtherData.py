@@ -74,6 +74,12 @@ def write_new_stocks():
     ts.new_stocks(pause=0.1).to_csv(os.path.abspath("{}/{}.csv".format(other_dir, 'newstock')))
 
 def tradecal(startday=None, endday=None):
+    '''
+    
+    :param startday: 
+    :param endday: 
+    :return: 
+    '''
     if not startday:
         start = '2017-06-15'
     # elif time.strptime(startday,'%Y-%m-%d') < time.strptime('2017-06-15', '%Y-%m-%d'):
@@ -92,6 +98,12 @@ def tradecal(startday=None, endday=None):
     return tc.loc[start:end].index.tolist()
 
 def market_value(dir, tickers):
+    '''
+    
+    :param dir: 
+    :param tickers: 
+    :return: 
+    '''
     df = pd.read_csv(dir, encoding='gbk')[['date', 'code', 'price', 'totals']]
     df.code = df.code.apply(code_to_symbol)
     df.set_index('code', inplace=True)

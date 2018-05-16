@@ -14,7 +14,11 @@
 #
 import os
 import sys
+
+# sys.path.append(os.path.join(os.path.dirname(__name__), '..'))
+# sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(0, os.path.abspath('..').strip('docs'))
+# sys.path.insert(0, os.path.abspath('./..'))
 
 import factorset
 
@@ -40,6 +44,7 @@ release = factorset.__version__
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
@@ -47,6 +52,11 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
 ]
+autodoc_mock_imports = ['aiohttp','async_timeout']
+
+# -- Docstrings
+extensions += ['sphinx.ext.napoleon']
+numpydoc_show_class_members = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -74,7 +84,8 @@ exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
 # highlight_language = 'python'
-pygments_style = 'default'
+# pygments_style = 'default'
+pygments_style = 'sphinx'
 
 
 # -- Options for HTML output -------------------------------------------------

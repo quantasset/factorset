@@ -31,6 +31,10 @@ def cash_flow_url(code):
 
 class FundCrawler(object):
     def __init__(self, TYPE):
+        '''
+        
+        :param TYPE: 
+        '''
 
         ############ SETTING #############
         self.config = GetConfig()
@@ -41,16 +45,16 @@ class FundCrawler(object):
         self.outdir = self.config.fund_dir
         self.encode = self.config.encode
         self.proxypool = self.config.proxypool
-        
+
         ############ CHANGE ABOVE SETTING #############
-    
+
         if self.MONGO:
             from arctic import Arctic
             # mongod --dbpath D:/idwzx/project/arctic
             a = Arctic(self.config.ahost)
             a.initialize_library('ashare_{}'.format(self.TYPE))
             self.lib = a['ashare_{}'.format(self.TYPE)]
-        
+
         self.result_dict = {}
 
 
@@ -59,7 +63,7 @@ class FundCrawler(object):
             async with session.get("http://{}/get/".format(self.proxypool)) as response:
                 proxy_str = await response.text()
                 return "http://{}".format(proxy_str)
-    
+
     async def fetch(self, queue, session, url, ticker):
         proxy_url = await self.get_proxy()
         print('proxy: ' + proxy_url)
@@ -75,7 +79,7 @@ class FundCrawler(object):
             print(e)
             print('Put {} in queue!'.format(ticker))
             await queue.put(ticker)
-    
+
     async def consume(self, queue):
         while True:
             ticker = await queue.get()
@@ -94,22 +98,22 @@ class FundCrawler(object):
                 else:
                     queue.put(ticker)
             queue.task_done()
-    
+
     async def run(self, queue, max_tasks):
         # schedule the consumer
         tasks = [asyncio.ensure_future(self.consume(queue)) for _ in range(max_tasks)]
         await queue.join()
         for w in tasks:
             w.cancel()
-    
+
     def write_to_MongoDB(self, symbol, df, source='Tushare'):
         try:
             self.lib.write(symbol, df, metadata={'source': source})
             print(symbol + '写入完成')
         except Exception as e:
             print("Failed for ", str(e))
-    
-    
+
+
     def data_clean(self, text):
         text = text.replace('\t\n', '\r\n')
         text = text.replace('\t', ',')
@@ -120,7 +124,7 @@ class FundCrawler(object):
         df.index = pd.to_datetime(df.index)
         df.index.name = 'date'
         return df
-    
+
     def main(self, Ashare, num=10, retry=2):
         fail = []
         asyncio.set_event_loop(asyncio.new_event_loop())
@@ -132,7 +136,7 @@ class FundCrawler(object):
                 # Reset fail
                 fail = []
                 asyncio.set_event_loop(asyncio.new_event_loop())
-    
+
             loop = asyncio.get_event_loop()
             queue = asyncio.Queue(loop=loop)
 
@@ -148,13 +152,13 @@ class FundCrawler(object):
 
             if not os.path.exists(self.outdir):
                 os.mkdir(self.outdir)
-    
+
             if self.RAW:
                 try:
                     pd.DataFrame([self.result_dict]).to_csv(os.path.abspath("./fund/raw.csv"), encoding=self.encode)
                 except Exception as e:
                     print(e)
-    
+
             for key in self.result_dict:
                 try:
                     df = self.data_clean(self.result_dict[key])

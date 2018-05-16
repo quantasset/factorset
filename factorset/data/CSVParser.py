@@ -31,15 +31,32 @@ def read_stock(dir, ticker):
     return pd.read_csv('{}/hq/{}.csv'.format(dir, ticker), encoding=encode, parse_dates=True, index_col=0)
 
 def concat_all_stock(dir):
+    '''
+    
+    :param dir: 
+    :return: 
+    '''
     return pd.concat([read_stock(dir, s) for s in all_stock_symbol(dir)])
 
 def hconcat_stock_series(hq, tickers):
+    '''
+    
+    :param hq: 
+    :param tickers: 
+    :return: 
+    '''
     l = []
     for ticker in tickers:
         l.append(hq[hq.code == ticker].close.rename(ticker, inplace=True).fillna(method='ffill'))
     return pd.concat(l, axis=1)
 
 def concat_stock(dir, tickers):
+    '''
+    
+    :param dir: 
+    :param tickers: 
+    :return: 
+    '''
     return pd.concat([read_stock(dir, s) for s in tickers])
 
 def all_fund_symbol(dir, type):

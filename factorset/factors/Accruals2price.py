@@ -4,13 +4,15 @@
 @file:Accruals2price.py
 @time:2018/3/1911:32
 """
-
+import os
 import pandas as pd
 import tushare as ts
 from factorset.factors import BaseFactor
 from factorset.data.OtherData import code_to_symbol, shift_date, market_value
 from factorset.data import CSVParser as cp
 from factorset.Util.finance import ttmContinues
+from factorset.Util.configutil import GetConfig
+
 
 class Accruals2price(BaseFactor):
     """
@@ -65,7 +67,6 @@ class Accruals2price(BaseFactor):
 if __name__ == '__main__':
     from_dt = '2017-07-15'
     to_dt = '2018-04-09'
-
     # 取沪深300
     hs300 = ts.get_hs300s()
     hs300.code = hs300.code.apply(code_to_symbol)
@@ -75,7 +76,7 @@ if __name__ == '__main__':
         factor_parameters={},
         tickers=hs300.code.tolist(),
         save_dir='',
-        data_source='D:\\idwzx\\project\\factorset\\data',
+        data_source=os.path.abspath('..'),
     )
 
     Accruals2price.generate_factor_and_store(from_dt, to_dt)

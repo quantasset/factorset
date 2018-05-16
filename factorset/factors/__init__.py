@@ -9,7 +9,11 @@ import os
 import tushare as ts
 import pandas as pd
 import numpy as np
-from factorset.data import ArcticParser, OtherData
+from factorset.data import OtherData
+from factorset.Util.configutil import GetConfig
+
+if GetConfig().MONGO:
+    from factorset.data import ArcticParser
 
 class BaseFactor(object):
     '''因子基类，用于因子的计算和存取
@@ -40,7 +44,11 @@ class BaseFactor(object):
             self.save_dir = save_dir + '/factor/{}.csv'
 
         self.__mongolib = mongolib
-        self.data_source = data_source
+        if data_source:
+            self.data_source = data_source
+        else:
+            self.data_source = os.path.abspath('..')
+
         # 新股数据异常慢
         # self.ipo_info_df = ts.new_stocks()
 
@@ -52,7 +60,7 @@ class BaseFactor(object):
         返回:(str)因子名
         '''
         return self.__factor_name
-    
+
     def prepare_data(self, from_date, to_date):
         raise NotImplementedError
 
@@ -60,10 +68,12 @@ class BaseFactor(object):
         raise NotImplementedError
 
     def generate_factor_and_store(self, from_date, to_date):
-        '''计算因子并录入数据库
-        params：
-            from_date: (str)起始时间
-            to_date: (str)结束时间
+        '''
+        计算因子并录入数据库
+
+        :param from_date: (str)起始时间
+        :param to_date: (str)结束时间
+        :return: 
         '''
         self.prepare_data(from_date, to_date)
         self.trading_days = self._get_trading_days(from_date, to_date)
