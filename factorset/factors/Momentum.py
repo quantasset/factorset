@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 """
 @author:code37
-@file:test.py
+@file:Momentum.py
 @time:2018/2/2317:37
 """
 
@@ -13,8 +13,7 @@ from factorset.data import CSVParser as cp
 class Momentum(BaseFactor):
     """
     :名称: 动量因子，股票收益率
-    :计算方法: 该指标的值等于最近三个月的股票收益率，利用当日和之前第252个交易日的复权价计算收益率，公式如下：
-    Momentum_3M=(dajclose_price(t)/ dajclose_price(t-63)-1)
+    :计算方法: 该指标的值等于最近三个月的股票收益率，利用当日和之前第252个交易日的复权价计算收益率，公式如下: Momentum_3M=(dajclose_price(t)/ dajclose_price(t-63)-1)
     """
     def __init__(self, factor_name='momentum_60D', tickers='000016.SH', factor_parameters={'lagTradeDays': 60}, data_source='', save_dir=None):
         # Initialize super class.
@@ -54,7 +53,7 @@ if __name__ == '__main__':
     hs300.code = hs300.code.apply(code_to_symbol)
 
     # 实例化因子
-    momentum_60M = Momentum(
+    momentum_60D = Momentum(
         factor_name='momentum_60D',
         factor_parameters={'lagTradeDays': 60},
         tickers=hs300.code.tolist(),
@@ -63,5 +62,5 @@ if __name__ == '__main__':
     )
 
     # 生成因子数据并入库
-    momentum_60M.generate_factor_and_store(from_dt, to_dt)
+    momentum_60D.generate_factor_and_store(from_dt, to_dt)
     print('因子构建完成，并已成功入库!')

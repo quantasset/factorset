@@ -132,7 +132,7 @@ Run Fetcher
 
 .. note::
 
-   If the number of proxies in your proxy pool is less than proxy min you set in the :py:file:`~factorset.CONFIG` factorset uses `proxy_pool <https://github.com/jhao104/proxy_pool>`_, see in :py:mod:`~factorset.data.Proxy_start`. You may also install redis for your proxy pool.
+   If the number of proxies in your proxy pool is less than proxy min you set in the :py:mod:`~factorset.CONFIG` factorset uses `proxy_pool <https://github.com/jhao104/proxy_pool>`_, see in :py:mod:`~factorset.data.Proxy_start`. You may also install redis for your proxy pool.
 
 .. code-block:: python
     :linenos:
