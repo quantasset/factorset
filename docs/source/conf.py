@@ -154,6 +154,12 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
+    'fontpkg':
+        u'''
+        \\usepackage{fontspec}
+        \\usepackage{xunicode}
+        \\usepackage{xeCJK}
+        ''',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
