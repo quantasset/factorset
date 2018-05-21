@@ -12,7 +12,9 @@ from factorset.data import CSVParser as cp
 
 class LDebt2TA(BaseFactor):
     """
-    LDebt2TA因子
+    :名称: 长期负债比率（Long-term liability rate）
+    :计算方法: 长期负债比 = 长期负债 / 资产总额
+    :应用: 长期负债比率越小，表明公司负债的资本化程度低，长期偿债压力小；反之，则表明公司负债的资本化程度高，长期偿债压力大。
 
     """
 

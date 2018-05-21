@@ -13,9 +13,10 @@ from factorset.Util.finance import ttmContinues
 
 class EP_TTM(BaseFactor):
     """
-    价值因子
+    :名称: 过去滚动4个季度（12月）市盈率的倒数
+    :计算方法: EP_TTM = 净利润（不含少数股东权益）_TTM /总市值
+    :应用: 市盈率越低，代表投资者能够以相对较低价格购入股票。
 
-    净利润ttm（不含少数股东权益) / 总市值
     """
 
     def __init__(self, factor_name='EP_TTM', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):

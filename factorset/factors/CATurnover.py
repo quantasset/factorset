@@ -13,9 +13,9 @@ from factorset.Util.finance import ttmContinues,ttmDiscrete
 
 class CATurnover(BaseFactor):
     """
-    流动资产周转率
-    CATurnover = Revenue / Current Asset
-    流动资产周转率 = 营业收入_TTM / 流动资产总计_TTM
+    :名称: 流动资产周转率
+    :计算方法: 流动资产周转率 = 营业收入_TTM / 流动资产总计_TTM，营业收入_TTM为最近4个季度报告期的营业收入之和，流动资产总计_TTM为最近5个季度报告期总资产的平均值。
+    :应用: 流动资产周转率越高，表明企业流动资产周转速度越快，利用越好。在较快的周转速度下，流动资产会相对节约，其意义相当于流动资产投入的扩大，在某种程度上增强了企业的创收能力。
     """
 
     def __init__(self, factor_name='CATurnover', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):

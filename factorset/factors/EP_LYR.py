@@ -14,7 +14,10 @@ from factorset.data import CSVParser as cp
 
 class EP_LYR(BaseFactor):
     """
-    净利润（不含少数股东权益）_最新年报/总市值
+    :名称: 静态市盈率的倒数；最近年报的市盈率的倒数
+    :计算方法: EP_LYR=净利润（不含少数股东权益）_最新年报/总市值
+    :应用: 市盈率越低，代表投资者能够以相对较低价格购入股票。
+    :注: 这里用的是市值，而不是价格，这种方法适合计算日度的数据，防止除权除息带来的价格扰动。
     """
     def __init__(self, factor_name='EP_LYR', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.

@@ -37,7 +37,8 @@ def write_all_date(tc, lib=None):
     :param tc: List，所有日期
     :param lib: arctic.store.version_store.VersionStore
 
-    :return: succ: List, written stocks; fail: List, failed written stocks  
+    :return: succ: List, written stocks; 
+    :return: fail: List, failed written stocks  
     """
     succ = []
     fail = []
@@ -70,15 +71,20 @@ def write_all_date(tc, lib=None):
         write_list(fail, os.path.abspath('./{}/other_fail_list.txt').format(other_dir))
 
 def write_new_stocks():
-    # 最多取到2016-04-26
+    """
+    从Tushare取每日新股数据，因Tushare数据限制，最多取到2016-04-26
+    
+    :return: None
+    """
     ts.new_stocks(pause=0.1).to_csv(os.path.abspath("{}/{}.csv".format(other_dir, 'newstock')))
 
 def tradecal(startday=None, endday=None):
     '''
+    交易日历
     
-    :param startday: 
-    :param endday: 
-    :return: 
+    :param startday: 默认为'2017-06-15'
+    :param endday: 默认为最近交易日
+    :return: list，交易日历
     '''
     if not startday:
         start = '2017-06-15'
@@ -99,10 +105,11 @@ def tradecal(startday=None, endday=None):
 
 def market_value(dir, tickers):
     '''
+    总市值的读取与计算
     
-    :param dir: 
-    :param tickers: 
-    :return: 
+    :param dir: str, 其他数据的储存路径
+    :param tickers: list, 股票代码
+    :return: pd.DataFrame: 总市值
     '''
     df = pd.read_csv(dir, encoding='gbk')[['date', 'code', 'price', 'totals']]
     df.code = df.code.apply(code_to_symbol)
@@ -116,9 +123,12 @@ def market_value(dir, tickers):
     return df
 
 def code_to_symbol(code):
-    '''
-        生成symbol代码标志
-    '''
+    """
+    生成symbol代码标志
+    
+    :param code: 数字
+    :return: str，股票代码
+    """
     if isinstance(code, int):
         code = str(code)
     if len(str(code)) != 6 :
@@ -128,15 +138,11 @@ def code_to_symbol(code):
 
 
 def shift_date(date_str, n):
-    """日期平移函数，获取date_str向后移动N个交易日所对应的交易日
-
-    Args:
-        date_str: 日期, "YYYYMMDD"格式的字符串
-        n: 时间跨度, int
-        direction: 方向, backward
-
-    Returns:
-         移动后的date
+    """
+  
+    :param date_str: 日期, 'YYYYMMDD'格式的字符串
+    :param n: 时间跨度, int
+    :return: 调整后的交易日，date
     """
     tc = ts.util.dateu.trade_cal()
     tc = tc[tc.isOpen == 1]

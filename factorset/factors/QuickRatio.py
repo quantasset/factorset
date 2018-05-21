@@ -15,7 +15,9 @@ from factorset.Util.finance import ttmContinues, ttmDiscrete
 
 class QuickRatio(BaseFactor):
     """
-    流动资产合计（最新财报）／ 流动负债合计（最新财报）
+    :名称: 速动比率（Quick Ratio）；酸性测验比率（Acid-test Ratio）
+    :计算方法: 速动比率 = 速动资产合计_最新财报 / 流动负债合计_最新财报；速动资产=流动资产-存货=流动资产-存货-预付账款-待摊费用
+    :应用: 速动比率是衡量企业流动资产中可以立即变现用于偿还流动负债的能力。速动资产包括货币资金、短期投资、应收票据、应收账款、其他应收款项等，可以在较短时间内变现。
     """
     def __init__(self, factor_name='QuickRatio', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.

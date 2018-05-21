@@ -16,7 +16,11 @@ from factorset.Util.configutil import GetConfig
 
 class Accruals2price(BaseFactor):
     """
-    Accruals2price =（净利润_TTM -经营活动产生的现金流量金额_TTM ） / 总市值
+    :Name: 应计收入与价格比率（Accruals-to-price）
+    :计算方法: 应计收入与价格比率 =（净利润_TTM - 经营活动产生的现金流量金额_TTM） / 总市值
+    :应用: 若应计收入与价格比率较高，公司可能夸大销售额，未来可能产生亏损，损害股价。
+    :注: O'Shaughnessy J P. What works on Wall Street: The classic guide to the best-performing investment strategies of all time[M]. McGraw Hill Professional, 2011.
+    
     """
     def __init__(self, factor_name='Accruals2price', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.

@@ -2,9 +2,18 @@
 Factorset Usage
 ===============
 
+Module contents
+~~~~~~~~~~~~~~~
+In all listed functions, the ``self`` argument is implicitly the
+currently-executing :class:`~factorset.factors.BaseFactor` instance.
+
+.. autoclass:: factorset.factors.BaseFactor
+    :members:
+    :undoc-members:
+
 Generate Factors
 ~~~~~~~~~~~~~~~~
-To use factorset in a project:
+To use factorset in a project, we may inherit the :class:`~factorset.factors.BaseFactor` for the New Factor:
 
 .. code-block:: python
 
@@ -91,163 +100,155 @@ To use factorset in a project:
 Factors Set
 ~~~~~~~~~~~
 
-factorset.factors.Accruals2price module
----------------------------------------
+Accruals2price
+--------------
 
-.. automodule:: factorset.factors.Accruals2price
+.. autoclass:: factorset.factors.Accruals2price.Accruals2price
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.AssetTurnover module
---------------------------------------
+AssetTurnover
+-------------
 
-.. automodule:: factorset.factors.AssetTurnover
+.. autoclass:: factorset.factors.AssetTurnover.AssetTurnover
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.Beta module
------------------------------
+Beta
+----
 
-.. automodule:: factorset.factors.Beta
+.. autoclass:: factorset.factors.Beta.Beta
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.CATurnover module
------------------------------------
+CATurnover
+----------
 
-.. automodule:: factorset.factors.CATurnover
+.. autoclass:: factorset.factors.CATurnover.CATurnover
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.CurrentRatio module
--------------------------------------
+CurrentRatio
+------------
 
-.. automodule:: factorset.factors.CurrentRatio
+.. autoclass:: factorset.factors.CurrentRatio.CurrentRatio
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.EP\_LYR module
---------------------------------
+EP\_LYR
+-------
 
-.. automodule:: factorset.factors.EP_LYR
+.. autoclass:: factorset.factors.EP_LYR.EP_LYR
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.EP\_TTM module
---------------------------------
+EP\_TTM
+-------
 
-.. automodule:: factorset.factors.EP_TTM
+.. autoclass:: factorset.factors.EP_TTM.EP_TTM
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.GPOA module
------------------------------
+GPOA
+----
 
-.. automodule:: factorset.factors.GPOA
+.. autoclass:: factorset.factors.GPOA.GPOA
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.GrossMarginTTM module
----------------------------------------
+GrossMarginTTM
+--------------
 
-.. automodule:: factorset.factors.GrossMarginTTM
+.. autoclass:: factorset.factors.GrossMarginTTM.GrossMarginTTM
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.InterestCover module
---------------------------------------
+InterestCover
+-------------
 
-.. automodule:: factorset.factors.InterestCover
+.. autoclass:: factorset.factors.InterestCover.InterestCover
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.LDebt2TA module
----------------------------------
+LDebt2TA
+--------
 
-.. automodule:: factorset.factors.LDebt2TA
+.. autoclass:: factorset.factors.LDebt2TA.LDebt2TA
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.Momentum module
----------------------------------
+Momentum
+--------
 
-.. automodule:: factorset.factors.Momentum
+.. autoclass:: factorset.factors.Momentum.Momentum
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.NATurnover module
------------------------------------
+NATurnover
+----------
 
-.. automodule:: factorset.factors.NATurnover
+.. autoclass:: factorset.factors.NATurnover.NATurnover
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.QuickRatio module
------------------------------------
+QuickRatio
+----------
 
-.. automodule:: factorset.factors.QuickRatio
+.. autoclass:: factorset.factors.QuickRatio.QuickRatio
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.ROIC module
------------------------------
+ROIC
+----
 
-.. automodule:: factorset.factors.ROIC
+.. autoclass:: factorset.factors.ROIC.ROIC
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.RoeGrowth1 module
------------------------------------
+RoeGrowth1
+----------
 
-.. automodule:: factorset.factors.RoeGrowth1
+.. autoclass:: factorset.factors.RoeGrowth1.RoeGrowth1
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.RoeGrowth2 module
------------------------------------
+RoeGrowth2
+----------
 
-.. automodule:: factorset.factors.RoeGrowth2
+.. autoclass:: factorset.factors.RoeGrowth2.RoeGrowth2
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.TA2TL module
-------------------------------
+TA2TL
+-----
 
-.. automodule:: factorset.factors.TA2TL
+.. autoclass:: factorset.factors.TA2TL.TA2TL
     :members:
     :undoc-members:
     :show-inheritance:
 
-factorset.factors.UnleverBeta module
-------------------------------------
+UnleverBeta
+-----------
 
-.. automodule:: factorset.factors.UnleverBeta
+.. autoclass:: factorset.factors.UnleverBeta.UnleverBeta
     :members:
     :undoc-members:
     :show-inheritance:
 
-
-Module contents
----------------
-
-.. automodule:: factorset.factors
-    :members:
-    :undoc-members:
-    :show-inheritance:

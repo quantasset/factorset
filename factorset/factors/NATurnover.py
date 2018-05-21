@@ -13,9 +13,10 @@ from factorset.Util.finance import ttmContinues, ttmDiscrete
 
 class NATurnover(BaseFactor):
     """
-    净资产周转率
-
-    NATurnover = revenue_TTM / netAsset_TTM
+    :名称: 净资产周转率
+    :计算方法: NATurnover = revenue_TTM / netAsset_TTM，净资产周转率 = 营业收入_TTM / 净资产总计_TTM，营业收入_TTM为最近4个季度报告期的营业收入之和，净资产总计_TTM为最近5个季度报告期总资产的平均值。
+    :应用: 资产周转率越高，表明企业总资产周转速度越快。销售能力越强，资产利用效率越高。
+    
     """
     def __init__(self, factor_name='NATurnover', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.
@@ -41,7 +42,7 @@ class NATurnover(BaseFactor):
         netAssets = cp.concat_fund(self.data_source, self.tickers, 'BS').loc[shifted_begin_date:end_date, ['ticker', 117, 121]]
         netAssets['netAssets'] =  netAssets[121] - netAssets[117]
         netAssets.drop([117, 121], axis=1, inplace=True)
-        netAssets = netAssets[netAssets['netAssets'] > 0]
+        netAssets = netAssets[netAssets['netAssets'] :0]
         netAssets['report_date'] = netAssets.index
         netAssets['release_date'] = netAssets.index
 

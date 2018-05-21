@@ -15,7 +15,9 @@ from factorset.Util.finance import ttmContinues, ttmDiscrete
 
 class CurrentRatio(BaseFactor):
     """
-    流动资产合计（最新财报）／ 流动负债合计（最新财报）
+    :名称: 流动比率（Current Ratio）；营运资金比率（Working Capital Ratio）；真实比率（Real Ratio）
+    :计算方法: 流动比率 = 流动资产合计_最新财报 / 流动负债合计_最新财报
+    :应用: 流动比率越高，说明资产的流动性越大，短期偿债能力越强。
     """
     def __init__(self, factor_name='CurrentRatio', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.

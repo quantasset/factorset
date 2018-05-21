@@ -13,7 +13,11 @@ from factorset.data import CSVParser as cp
 
 
 class TA2TL(BaseFactor):
-
+    """
+    :名称: 资产负债比（百度百科），资产负债率（Debt Assets ratio）的倒数
+    :计算方法: 资产负债比 = 资产总额 / 负债总额
+    :应用: 资产所占的比重越大，企业的经营风险就比较低，但相对来说，企业的资金利用就不是太有效率。
+    """
     def __init__(self, factor_name='TA2TL', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.
         super().__init__(factor_name=factor_name, tickers=tickers,

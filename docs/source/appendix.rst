@@ -68,13 +68,5 @@ Data Util
 .. autofunction:: factorset.Util.finance.ttmDiscrete
 
 
-Factor Object
-~~~~~~~~~~~~~
-In all listed functions, the ``self`` argument is implicitly the
-currently-executing :class:`~factorset.factors.BaseFactor` instance.
-
-.. autoclass:: factorset.factors.BaseFactor
-   :members:
-   :undoc-members:
 
 

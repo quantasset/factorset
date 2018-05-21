@@ -13,6 +13,11 @@ from factorset.data import CSVParser as cp
 from factorset.Util.finance import ttmContinues
 
 class ROIC(BaseFactor):
+    """
+    :名称: 投资资本回报率
+    :计算方法: 投资资本回报率 = （净利润（不含少数股东权益）_TTM + 财务费用 _TTM）/ 投资资本_TTM，投资资本 = 资产总计 - 流动负债 + 应付票据 + 短期借款 + 一年内到期的长期负债，净利润_TTM为最近4个季度报告期的净利润之和，投资资本_TTM为最近5个季度报告期总资产的平均值。
+    :应用: 一般而言，资本回报率较高表明公司强健或者管理有方。但同时，也可能管理者过分强调营收，忽略成长机会，牺牲长期价值。
+    """
     def __init__(self, factor_name='ROIC', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.
         super(ROIC, self).__init__(factor_name=factor_name, tickers=tickers,

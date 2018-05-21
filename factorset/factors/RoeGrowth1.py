@@ -14,6 +14,10 @@ from factorset.Util.finance import ttmContinues, ttmDiscrete
 
 
 class RoeGrowth1(BaseFactor):
+    """
+    :名称: ROE(TTM)增长（上一季度）
+    :计算方法: ROE增长 = 本季度ROE(TTM) - 上一季度ROE(TTM)
+    """
     def __init__(self, factor_name='RoeGrowth1', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.
         super(RoeGrowth1, self).__init__(factor_name=factor_name, tickers=tickers,

@@ -13,11 +13,12 @@ from factorset.data import CSVParser as cp
 
 class InterestCover(BaseFactor):
     """
-     利息覆盖率(InterestCover)
-        计算方法：EBIT / 利息费用,其中 EBIT=利润总额+净利息费用
-
-        净利息费用=利息支出-利息收入，若未披露财务费用附注，则直接取财务费用值
+    
+    :名称: 利息覆盖率；利息覆盖倍数(InterestCover)
+    :计算方法: EBIT / 利息费用，其中 EBIT=利润总额+净利息费用；净利息费用=利息支出-利息收入，若未披露财务费用附注，则直接取财务费用值
+    :应用: 利息覆盖率可以衡量企业的偿债能力，特别是在公司经历业绩低谷，自由现金流脆弱的时期更为关键，它可以说明公司是否还有能力支付利息以避免偿债风险，以及是否还有融资能力来扭转困境。
     """
+
     def __init__(self, factor_name='InterestCover', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.
         super(InterestCover, self).__init__(factor_name=factor_name, tickers=tickers,

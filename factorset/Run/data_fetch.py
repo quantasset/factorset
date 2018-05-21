@@ -22,6 +22,9 @@ def get_all_proxy(url):
     return requests.get("http://{}/get_all/".format(url)).json()
 
 def data_fetch():
+    """
+    从config中读取配置，爬取行情，基本面，及其他数据。
+    """
     gc = GetConfig()
     if gc.target == 'all':
         target = pd.read_csv(data.__file__.strip(data.__file__.split('\\')[-1])+'allAShare.csv')

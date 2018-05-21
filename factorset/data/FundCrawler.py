@@ -30,11 +30,14 @@ def cash_flow_url(code):
 
 
 class FundCrawler(object):
+    """
+    **FundCrawler类，协程爬取基本面数据**
+    
+    """
     def __init__(self, TYPE):
-        '''
-        
-        :param TYPE: 
-        '''
+        """
+        :param TYPE: 'BS', 'IS', 'CF'
+        """
 
         ############ SETTING #############
         self.config = GetConfig()
@@ -59,12 +62,26 @@ class FundCrawler(object):
 
 
     async def get_proxy(self):
+        """
+        获取proxy
+        
+        :return: proxy地址
+        """
         async with aiohttp.ClientSession() as session:
             async with session.get("http://{}/get/".format(self.proxypool)) as response:
                 proxy_str = await response.text()
                 return "http://{}".format(proxy_str)
 
     async def fetch(self, queue, session, url, ticker):
+        """
+        单个ticker基本面爬取
+        
+        :param queue: ticker 队列
+        :param session: aiohttp.ClientSession()
+        :param url: 股票基本面爬取地址
+        :param ticker: 股票代码
+        :return: 基本面数据text
+        """
         proxy_url = await self.get_proxy()
         print('proxy: ' + proxy_url)
         # ticker = url.split('/')[-3]
@@ -81,6 +98,12 @@ class FundCrawler(object):
             await queue.put(ticker)
 
     async def consume(self, queue):
+        """
+        消费直到任务结束
+        
+        :param queue: ticker 队列
+        :return: None
+        """
         while True:
             ticker = await queue.get()
             async with aiohttp.ClientSession() as session:
@@ -100,13 +123,26 @@ class FundCrawler(object):
             queue.task_done()
 
     async def run(self, queue, max_tasks):
-        # schedule the consumer
+        """
+        Schedule the consumer
+        
+        :param queue: ticker 队列
+        :param max_tasks: 最大协程数
+        :return: None
+        """
         tasks = [asyncio.ensure_future(self.consume(queue)) for _ in range(max_tasks)]
         await queue.join()
         for w in tasks:
             w.cancel()
 
     def write_to_MongoDB(self, symbol, df, source='Tushare'):
+        """
+        
+        :param symbol: ticker
+        :param df: 单个ticker基本面数据，pd.DataFrame
+        :param source: 注释表明来源，str，默认为'Tushare'
+        :return: None
+        """
         try:
             self.lib.write(symbol, df, metadata={'source': source})
             print(symbol + '写入完成')
@@ -115,6 +151,12 @@ class FundCrawler(object):
 
 
     def data_clean(self, text):
+        """
+        text数据清洗
+        
+        :param text: 协程爬取的text数据 
+        :return: pd.DataFrame
+        """
         text = text.replace('\t\n', '\r\n')
         text = text.replace('\t', ',')
         df = pd.read_csv(StringIO(text), dtype={'code': 'object'})
@@ -126,6 +168,17 @@ class FundCrawler(object):
         return df
 
     def main(self, Ashare, num=10, retry=2):
+        """
+        协程爬取主程序
+        
+        :param Ashare: 带爬取tickers
+        :type Ashare: list 
+        :param num: 最大协程数
+        :type num: int
+        :param retry: 重启次数
+        :type retry: int
+        :return: None
+        """
         fail = []
         asyncio.set_event_loop(asyncio.new_event_loop())
 

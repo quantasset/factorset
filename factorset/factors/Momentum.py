@@ -11,7 +11,12 @@ from factorset.data.OtherData import code_to_symbol, shift_date
 from factorset.data import CSVParser as cp
 
 class Momentum(BaseFactor):
-    def __init__(self, factor_name='Momentum', tickers='000016.SH', factor_parameters={'lagTradeDays': 60}, data_source='', save_dir=None):
+    """
+    :名称: 动量因子，股票收益率
+    :计算方法: 该指标的值等于最近三个月的股票收益率，利用当日和之前第252个交易日的复权价计算收益率，公式如下：
+    Momentum_3M=(dajclose_price(t)/ dajclose_price(t-63)-1)
+    """
+    def __init__(self, factor_name='momentum_60D', tickers='000016.SH', factor_parameters={'lagTradeDays': 60}, data_source='', save_dir=None):
         # Initialize super class.
         super(Momentum, self).__init__(factor_name=factor_name, tickers=tickers,
                                    factor_parameters=factor_parameters,
@@ -50,7 +55,7 @@ if __name__ == '__main__':
 
     # 实例化因子
     momentum_60M = Momentum(
-        factor_name='momentum_60M',
+        factor_name='momentum_60D',
         factor_parameters={'lagTradeDays': 60},
         tickers=hs300.code.tolist(),
         save_dir='',

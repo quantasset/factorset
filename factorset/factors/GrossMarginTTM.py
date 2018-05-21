@@ -12,6 +12,11 @@ from factorset.data import CSVParser as cp
 from factorset.Util.finance import ttmContinues
 
 class GrossMarginTTM(BaseFactor):
+    """
+    :名称: 毛利率；销售毛利率
+    :计算方法: =（营业收入_TTM - 营业成本_TTM）/ 营业收入_TTM，营业收入_TTM为最近4个季度报告期的营业收入之和，营业成本_TTM为最近4个季度报告期的营业成本之和。
+    :应用: 毛利率越高表明企业的盈利能力越强，控制成本的能力越强。但是对于不同规模和行业的企业，毛利率的可比性不强。
+    """
     def __init__(self, factor_name='GrossMarginTTM', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.
         super(GrossMarginTTM, self).__init__(factor_name=factor_name, tickers=tickers,

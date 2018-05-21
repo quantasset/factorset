@@ -9,12 +9,12 @@ from datetime import datetime
 
 def ttmContinues(report_df, label):
     """
-    compute Trailing Twelve Months for multiple indicator.
-
+    Compute Trailing Twelve Months for multiple indicator.
+ 
     computation rules:
         #. ttm indicator is computed on announcement date.
-        #. on given release_date, use the latest report_date and the previous report year for computation.
-            if any report period is missing, use weighted method.
+        #. on given release_date, use the latest report_date and the previous report year for computation. 
+        #. if any report period is missing, use weighted method.
         #. if two reports (usually first-quoter and annual) are released together, only keep latest
 
     :param report_df: must have 'report_date', 'release_date', and <label> columns
@@ -25,9 +25,10 @@ def ttmContinues(report_df, label):
     :return:  columned by ['datetime', 'report_date', <label>+'_TTM', ...]
     :rtype: Pandas.DataFrame
 
+    .. todo::
+       if announce_date exist, use announce_date instead of release_date, report_date as well
     """
 
-    ##TODO: if announce_date exist, use announce_date instead of release_date, report_date as well
     report_df = report_df.sort_values(by=['release_date', 'report_date'])
     report_df = report_df.drop_duplicates(subset=['release_date', 'report_date'])  # 剔除重复的数据
     report_df = report_df.reset_index(drop=True)
@@ -102,14 +103,17 @@ def ttmContinues(report_df, label):
 
 def ttmDiscrete(report_df, label_str, min_report_num=4):
     """
-
+    
     :param report_df: must have 'report_date', 'release_date', and <label> columns
     :type report_df: Pandas.DataFrame
-    :param label:
+    :param label_str: 
+    :param min_report_num:
+    :type min_report_num: int
+    
+    :return:  columned by ['datetime', 'report_date', <label>+'_TTM', ...]
+    :rtype: pd.DataFrame
 
-    :return:
     """
-    ##TODO: if announce_date exist, use announce_date instead of release_date, report_date as well
     label_list = label_str.replace(' ', '').split(',')
 
     report_df = report_df.sort_values(by=['report_date', 'release_date'], ascending=[False, False])

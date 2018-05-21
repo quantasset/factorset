@@ -72,6 +72,11 @@ def get_index(symbol):
     return ts.bar(symbol, cons, freq='D', start_date='', end_date='', asset='INDEX').sort_index(ascending=True)
 
 def save_index(symbol):
+    """
+    从Tushare取指数行情，000905 中证500，000300 沪深300
+    
+    :param symbol: 指数的代码
+    """
     cons = ts.get_apis()
     df = ts.bar(symbol, cons, freq='D', asset='INDEX').sort_index(ascending=True)
     df.code = str(symbol)

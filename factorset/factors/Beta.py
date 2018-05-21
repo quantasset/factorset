@@ -16,9 +16,9 @@ from factorset.data import StockSaver as sp
 
 class Beta(BaseFactor):
     """
-    Beta因子
-
-    每个股票或资产组合的一段时间τ的收益率与对应标的同一时间区间收益率进行回归。
+    :名称: Beta系数
+    :计算方法: 取最近样本区间，分别计算指定证券日普通收益率Xi和沪深300日普通收益率Yi，OLS回归计算Beta。
+    :应用: Beta系数是用来衡量两个时间序列之间关系的统计指标。在金融数据的分析中，Beta用来衡量个股相对于市场的风险。
     """
     def __init__(self, factor_name='Beta_60D', tickers='000016.SH', factor_parameters={'lagTradeDays': 60, 'benchmark': '000300'}, data_source='', save_dir=None):
         # Initialize super class.

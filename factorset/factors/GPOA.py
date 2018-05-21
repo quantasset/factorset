@@ -13,7 +13,12 @@ from factorset.Util.finance import ttmContinues,ttmDiscrete
 
 
 class GPOA(BaseFactor):
-    """ Gross Profit On Asset """
+    """ 
+    :名称: 毛利率；毛利比总资产
+    :计算方法: 毛利率 = （营业收入 - 营业成本） / 总资产
+    :应用: 毛利率可以反应企业的盈利能力，是一个商品经过生产转换内部系统以后增值。
+
+    """
     def __init__(self, factor_name='GPOA', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
         # Initialize super class.
         super(GPOA, self).__init__(factor_name=factor_name, tickers=tickers,
@@ -89,4 +94,3 @@ if __name__ == '__main__':
 
     GPOA.generate_factor_and_store(from_dt, to_dt)
     print('因子构建完成，并已成功入库!')
-    
