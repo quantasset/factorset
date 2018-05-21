@@ -99,8 +99,8 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 # html_theme = 'sphinx_rtd_theme'
 
 # The name of the Pygments (syntax highlighting) style to use.
-highlight_language = 'python'
-# pygments_style = 'default'
+# highlight_language = 'python'
+pygments_style = 'default'
 # pygments_style = 'sphinx'
 
 
