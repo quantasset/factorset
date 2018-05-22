@@ -13,7 +13,7 @@ currently-executing :class:`~factorset.factors.BaseFactor` instance.
 
 Generate Factors
 ~~~~~~~~~~~~~~~~
-To use factorset in a project, we may inherit the :class:`~factorset.factors.BaseFactor` for the New Factor:
+To use factorset in a project, we need to inherit the :class:`~factorset.factors.BaseFactor` for the New Factor:
 
 .. code-block:: python
 
@@ -26,54 +26,28 @@ To use factorset in a project, we may inherit the :class:`~factorset.factors.Bas
     from factorset.Util.finance import ttmContinues
 
     class NewFactor(BaseFactor):
-        """
-        NewFactor = Calculate Method
-        """
-        def __init__(self, factor_name='NewFactor', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
-            # Initialize super class.
-            super(NewFactor, self).__init__(factor_name=factor_name, tickers=tickers,
-                                         factor_parameters=factor_parameters,
-                                         data_source=data_source, save_dir=save_dir)
+    """
+    :Name: NewFactor
+    :Cal_Alg: NewFactor = blablabla
+    :App: NewFactor can never blow up your account!
 
-        def prepare_data(self, begin_date, end_date):
-            shifted_begin_date = shift_date(begin_date, 500)
-            # motherNetProfit 40
-            inst = cp.concat_fund(self.data_source, self.tickers, 'IS').loc[shifted_begin_date:end_date,['ticker', 40]]
-            inst['release_date'] = inst.index
-            inst['report_date'] = inst.index
-            # cash_flows_yield 133
-            cf = cp.concat_fund(self.data_source, self.tickers, 'CF').loc[shifted_begin_date:end_date,['ticker', 133]]
-            cf['release_date'] = cf.index
-            cf['report_date'] = cf.index
+    """
 
-            self.accrual_df = cf.merge(inst, on=['ticker', 'release_date', 'report_date'])
-            self.accrual_df['accr'] = self.accrual_df[40] - self.accrual_df[133]
+    def __init__(self, factor_name='NewFactor', tickers='000016.SH', data_source='', factor_parameters={}, save_dir=None):
+        # Initialize super class.
+        super(NewFactor, self).__init__(factor_name=factor_name, tickers=tickers,
+                                     factor_parameters=factor_parameters,
+                                     data_source=data_source, save_dir=save_dir)
 
-            cash_flow_ls = []
-            for ticker in self.accrual_df['ticker'].unique():
-                try:
-                    reven_df = ttmContinues(self.accrual_df[self.accrual_df['ticker'] == ticker], 'accr')
-                    reven_df['ticker'] = ticker
-                except:
-                    continue
-                cash_flow_ls.append(reven_df)
+    def prepare_data(self, begin_date, end_date):
 
-            self.accrual_ttm = pd.concat(cash_flow_ls)
-            # 总市值
-            # Tushare的市值数据只有17年-now
-            df = market_value(self.data_source + '\\other\\otherdata.csv', self.tickers)
-            self.mkt_value = df.drop(['price', 'totals'], axis=1)
+        self.data = cp.choose_a_dataset()
 
-        def generate_factor(self, trading_day):
-            accr_df = self.accrual_ttm[self.accrual_ttm['datetime'] <= trading_day]
-            accr_df = accr_df.sort_values(by=['datetime', 'report_date'], ascending=[False, False])
-            accr_se = accr_df.groupby('ticker')['accr_TTM'].apply(lambda x: x.iloc[0])  # 取最近1年的财报
+    def generate_factor(self, trading_day):
 
-            today_mkt_value = self.mkt_value.loc[trading_day]
-            mkt_value = today_mkt_value.set_index('ticker')['mkt_value']
-            ret_se = accr_se / mkt_value
-            return ret_se.dropna()
+        factor_at_trading_day = awesome_func(self.data)
 
+        return factor_at_trading_day
 
     if __name__ == '__main__':
         from_dt = '2017-07-15'
@@ -151,7 +125,7 @@ EP\_LYR
 EP\_TTM
 -------
 
-.. autoclass:: factorset.factors.EP_TTM.EP_TTM
+.. autoclass:: factorset.factors.NewFactor.NewFactor
     :members:
     :undoc-members:
     :show-inheritance:
