@@ -125,7 +125,7 @@ EP\_LYR
 EP\_TTM
 -------
 
-.. autoclass:: factorset.factors.NewFactor.NewFactor
+.. autoclass:: factorset.factors.EP_TTM.EP_TTM
     :members:
     :undoc-members:
     :show-inheritance:
