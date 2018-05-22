@@ -147,12 +147,12 @@ latex_elements = {
     #
     # 'pointsize': '10pt',
 
-    'babel':'\\usepackage[english]{babel}',      # not supporting Chinese
+    'babel': r'\usepackage[english]{babel}',      # not supporting Chinese
+    ''
     'inputenc':'',   # conflict with xeCJK
     'utf8extra':'',  # using inputenc
 
     # Additional stuff for the LaTeX preamble.
-    #
      'preamble': r'''
      \usepackage{xeCJK}
      \usepackage{indentfirst}
