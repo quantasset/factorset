@@ -147,19 +147,19 @@ latex_elements = {
     #
     # 'pointsize': '10pt',
 
+    'babel':'\\usepackage[english]{babel}',      # not supporting Chinese
+    'inputenc':'',   # conflict with xeCJK
+    'utf8extra':'',  # using inputenc
+
     # Additional stuff for the LaTeX preamble.
     #
-    # 'preamble': '',
-
+     'preamble': r'''
+     \usepackage{xeCJK}
+     \usepackage{indentfirst}
+     ''',
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    'fontpkg':
-        u'''
-        \\usepackage{fontspec}
-        \\usepackage{xunicode}
-        \\usepackage{xeCJK}
-        ''',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
