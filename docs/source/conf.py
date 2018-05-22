@@ -106,7 +106,7 @@ pygments_style = 'default'
 
 # -- Options for HTML output -------------------------------------------------
 
-source_encoding = 'utf-8'
+# source_encoding = 'utf-8'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
@@ -136,7 +136,7 @@ htmlhelp_basename = 'factorsetdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
-latex_engine = 'pdflatex'
+latex_engine = 'xelatex'
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
