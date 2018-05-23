@@ -52,7 +52,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
 ]
-autodoc_mock_imports = ['aiohttp','async_timeout','tushare']
+autodoc_mock_imports = ['aiohttp','async_timeout','tushare', 'tushare.stock']
 
 # -- Docstrings
 extensions += ['sphinx.ext.napoleon']
