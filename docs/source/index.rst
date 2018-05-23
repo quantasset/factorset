@@ -6,7 +6,7 @@
 .. include:: ../../README.rst
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :numbered: 2
    :caption: DOCUMENTATION INDEX
 
